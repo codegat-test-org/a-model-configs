@@ -1,0 +1,24 @@
+name: CI Config
+run-name: CI Config
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - config/**
+env:
+  CI_JSON_SCHEMA_VERSION: 1-0-0
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo '::notice::Validating config/ci.json with ${{ env.CI_JSON_SCHEMA_VERSION }}'
+
+      - name: config/ci.json
+        uses: access-nri/schema/.github/actions/validate-with-schema@main
+        with:
+          schema-version: ${{ env.CI_JSON_SCHEMA_VERSION }}
+          meta-schema-version: draft-2020-12
+          schema-location: au.org.access-nri/model/configuration/ci
+          data-location: config/ci.json
