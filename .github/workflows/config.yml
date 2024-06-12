@@ -15,6 +15,9 @@ jobs:
     steps:
       - run: echo '::notice::Validating config/ci.json with ${{ env.CI_JSON_SCHEMA_VERSION }}'
 
+      - name: Checkout CI Config
+        uses: actions/checkout@v4
+
       - name: config/ci.json
         uses: access-nri/schema/.github/actions/validate-with-schema@main
         with:
