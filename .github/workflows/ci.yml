@@ -36,7 +36,7 @@ jobs:
   pr-comment:
     name: Comment
     if: github.event_name == 'issue_comment'
-    uses: codegat-test-org/meta-model-configs/.github/workflows/config-pr-2-comment.yml@main
+    uses: codegat-test-org/meta-model-configs/.github/workflows/config-pr-2-confirm.yml@main
     secrets: inherit
     permissions:
       contents: write  # For updating metadata.yaml version and committing checksums
